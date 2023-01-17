@@ -42,15 +42,15 @@ system.time({
 ###rprof function start###
 ##########################
 ## Rprof() function starts the profiler in R
-## summaryRprof() function summarizes the output from rprof() (otherwise it's not readable)
-## Rprof keeps track of the function call stack at regularly timed intervals and tabulates how much time is spent in each function 
+## summaryRprof() function summarizes the output from rprof() and tabulates how much time is spent in each function (otherwise it's not readable)
+## Rprof keeps track of the function call stack at regularly timed intervals 
 ## NOTES: (1)Do not use system.time() and Rprof() together (2) If code runs very quickly, profiler will not be useful (do not use it)
 ## Rprof simply returns the function call stack at .02 second intervals 
 ## summaryRprof uses that raw output and calculates how much time is spent in each function 
 ## summaryRprof uses two methods:
 ## (1) by.total divides the time spent in each function by the total run time (this just gives us amount of time spent in top level function, but in reality the top level function may be spending a lot of time calling lower level functions)
 ## (2) by.self does the same but first subtracts out time spent in functions above in the call stack (this gives us the amount of time spent in the top level function but subtracting out all the function that it calls (lower level functions))
-## by.self gives a more accurate representation of the time spent in each function in the call function call stack 
+## by.self gives a more accurate representation of the time spent in each function in the call function call stack (helps identify bottlenecks in the code)
 ## summaryRprof() gives 4 outputs: (1) by.total (2) by.self (3) sample.interval- what time interval was used to print call stacks  (4) sampling.time- total amount of time expression took the run (equivalent to elapsed time in system.time function)
 
 
