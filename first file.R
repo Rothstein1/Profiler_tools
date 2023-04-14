@@ -37,6 +37,7 @@ system.time({
 ###system.time function end####
 ###############################
 
+y <- 1:100
 
 ##########################
 ###rprof function start###
